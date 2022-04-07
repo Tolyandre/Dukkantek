@@ -1,0 +1,7 @@
+﻿{
+  countPerStatus: {
+    Damaged: 1,
+    InStock: 2,
+    Sold: 1
+  }
+}

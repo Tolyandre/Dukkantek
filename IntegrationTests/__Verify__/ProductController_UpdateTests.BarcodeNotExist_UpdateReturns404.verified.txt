@@ -1,0 +1,5 @@
+﻿{
+  status: 404,
+  title: Not Found,
+  type: https://tools.ietf.org/html/rfc7231#section-6.5.4
+}

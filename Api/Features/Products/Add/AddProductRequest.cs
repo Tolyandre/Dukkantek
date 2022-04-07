@@ -19,9 +19,9 @@ namespace Dukkantek.Api.Features.Products.Add
         public float Weight { get; set; }
 
         [Required]
-        public ProductStatusId StatusId { get; set; }
+        public ProductStatusId? StatusId { get; set; }
 
         [Required]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
     }
 }

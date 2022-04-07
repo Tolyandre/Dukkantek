@@ -47,9 +47,9 @@ namespace Dukkantek.Api.Features.Products.Add
             {
                 Barcode = request.Barcode,
                 Name = request.Name,
-                CategoryId = request.CategoryId,
+                CategoryId = request.CategoryId.Value,
                 Description = request.Description,
-                StatusId = request.StatusId,
+                StatusId = request.StatusId.Value,
                 Weight = request.Weight,
             };
         }

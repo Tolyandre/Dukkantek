@@ -1,0 +1,4 @@
+﻿{
+  barcode: A-0050-C,
+  name: Charge Station
+}
