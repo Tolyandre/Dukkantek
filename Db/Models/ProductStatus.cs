@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Dukkantek.Db.Models
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ProductStatusId : int
     {
         Sold = 0,
@@ -10,6 +12,7 @@ namespace Dukkantek.Db.Models
         Damaged = 2,
     }
 
+    [Table("ProductStatus")]
     public class ProductStatus
     {
         [Column("product_status_id")]

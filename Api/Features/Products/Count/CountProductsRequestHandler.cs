@@ -15,12 +15,13 @@ namespace Dukkantek.Api.Features.Products.Count
 
         public async Task<CountProductResponse> Handle(CountProductsRequest request, CancellationToken cancellationToken)
         {
-           var query = await _dbContext.Products
-                .GroupBy(p => p.StatusId)
-                .ToDictionaryAsync(
-                    group => group.Key,
-                    group => group.Count(),
-                    cancellationToken: cancellationToken);
+            var query = await _dbContext.ProductStatuses
+                 .Select(s => new
+                     {
+                         StatusId = s.Id,
+                         Count = _dbContext.Products.Count(p => p.StatusId == s.Id),
+                     })
+                 .ToDictionaryAsync(x => x.StatusId, x => x.Count, cancellationToken);
 
             return new CountProductResponse
             {

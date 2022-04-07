@@ -8,7 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1E55304D-CC59-4C69-BF13-FF892A441486}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		DEV_Smart_Charging_Assignment_v12.pdf = DEV_Smart_Charging_Assignment_v12.pdf
 		README.md = README.md
 	EndProjectSection
 EndProject

@@ -1,3 +1,5 @@
+using Dukkantek.Api.Features.Categories.Add;
+using Dukkantek.Api.Features.Categories.Get;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

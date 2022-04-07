@@ -25,9 +25,5 @@
   <ItemGroup>
     <InternalsVisibleTo Include="IntegrationTests" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
   
 </Project>
