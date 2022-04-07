@@ -3,6 +3,7 @@ using Dukkantek.Db.Models;
 using MediatR;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
+using Dukkantek.Api.Exceptions;
 
 namespace Dukkantek.Api.Features.Products.Add
 {
@@ -29,15 +30,23 @@ namespace Dukkantek.Api.Features.Products.Add
 
         private async Task<AddProductResponse> Add(AddProductRequest request, CancellationToken cancellationToken)
         {
-            var Product = Map(request);
+            var isCategoryExists = await _dbContext.Categories.AnyAsync(c => c.Id == request.CategoryId);
+            if (!isCategoryExists)
+                throw new RespondBadRequestException("categoryId", "This category does not exist.");
 
-            _dbContext.Add(Product);
+            var isBarcodeExist = await _dbContext.Products.AnyAsync(p => p.Barcode == request.Barcode);
+            if (isBarcodeExist)
+                throw new RespondBadRequestException("barcode", "Product with this barcode already exists.");
+
+            var product = Map(request);
+
+            _dbContext.Add(product);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return new AddProductResponse
             {
-                Barcode = Product.Barcode,
-                Name = Product.Name
+                Barcode = product.Barcode,
+                Name = product.Name
             };
         }
 

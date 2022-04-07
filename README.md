@@ -6,16 +6,22 @@ We have an inventory with :
 
 
 Using DDD, SQL server, EF Core for the database provider, .Net core, no UI needed just the APIs
-- Create 3 APIs
+- Create 3 APIs (see [ProductsController.cs](./Api/Features/Products/ProductsController.cs))
     1) Count the number of products sold, damaged and inStock
+       
+       See [implementation](./Api/Features/Products/CountPerStatus/CountProductsRequestHandler.cs), [integration test](./IntegrationTests/Api/Features/Products/ProductController_GetAddTests.cs)
     2) Change the status of a product
+
+       See [implementation](./Api/Features/Products/UpdateStatus/UpdateStatusRequestHandler.cs), [integration test](./IntegrationTests/Api/Features/Products/ProductController_UpdateTests.cs)
     3) Sell a product
+       
+       See [implementation](./Api/Features/Products/Sell/SellRequestHandler.cs), [integration test](./IntegrationTests/Api/Features/Products/ProductController_UpdateTests.cs)
 
 
 # Implementation notes
 
-- This is not DDD, sorry. DDD requires some research on domain, but we are given data scheme only.
-- Transaction Script design pattern with Vertical Slices featured by MediatR.
+- This is not DDD, sorry. DDD requires some research on domain, but we are given data schema only.
+- This is a Transaction Script design pattern with Vertical Slices featured by MediatR.
 - Integration tests covers both logic and API stability.
 - RESTful api, with validations.
 - Short and clean tests, due to expectations are files in `__Verify__` folder.
@@ -51,7 +57,8 @@ To re-create database restart the docker container.
 
 ### Initial data
 
-See database initial data in [DukkantekDbContext.cs](./Db/DukkantekDbContext.cs).
+Probably you want to know barcode values and category IDs to see how app works.
+There is database initial data in [DukkantekDbContext.cs](./Db/DukkantekDbContext.cs).
 
 ## Run app
 

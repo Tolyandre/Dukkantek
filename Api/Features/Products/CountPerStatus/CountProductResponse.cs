@@ -1,6 +1,6 @@
 ﻿using Dukkantek.Db.Models;
 
-namespace Dukkantek.Api.Features.Products.Count
+namespace Dukkantek.Api.Features.Products.CountPerStatus
 {
     public class CountProductResponse
     {

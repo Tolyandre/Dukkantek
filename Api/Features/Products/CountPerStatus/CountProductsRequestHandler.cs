@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dukkantek.Api.Features.Products.Count
+namespace Dukkantek.Api.Features.Products.CountPerStatus
 {
     public class CountProductsRequestHandler : IRequestHandler<CountProductsRequest, CountProductResponse>
     {
@@ -17,10 +17,10 @@ namespace Dukkantek.Api.Features.Products.Count
         {
             var query = await _dbContext.ProductStatuses
                  .Select(s => new
-                     {
-                         StatusId = s.Id,
-                         Count = _dbContext.Products.Count(p => p.StatusId == s.Id),
-                     })
+                 {
+                     StatusId = s.Id,
+                     Count = _dbContext.Products.Count(p => p.StatusId == s.Id),
+                 })
                  .ToDictionaryAsync(x => x.StatusId, x => x.Count, cancellationToken);
 
             return new CountProductResponse

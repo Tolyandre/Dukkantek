@@ -1,5 +1,5 @@
 using Dukkantek.Api.Features.Products.Add;
-using Dukkantek.Api.Features.Products.Count;
+using Dukkantek.Api.Features.Products.CountPerStatus;
 using Dukkantek.Api.Features.Products.GetAll;
 using Dukkantek.Api.Features.Products.Sell;
 using Dukkantek.Api.Features.Products.UpdateStatus;
@@ -20,8 +20,6 @@ namespace Dukkantek.Api.Features.Products
         }
 
         [HttpGet("", Name = "GetAllProducts")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetAllProductsResponse))]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public Task<GetAllProductsResponse[]> GetAllProducts(CancellationToken cancellationToken)
         {
             return _mediator.Send(new GetAllProductsRequest(), cancellationToken);
